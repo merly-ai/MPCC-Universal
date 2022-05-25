@@ -44,8 +44,10 @@ if [[ "$kernel" == "Linux" ]]; then
 elif [[ "$kernel" == "Darwin" ]]; then
   if [[ "$(arch)" == "x86_64" ]]; then
     url_request_url="${base_url}MacOS-x64"
-  else
+  elif [[ "$(arch)" == "arm64" ]]; then
     url_request_url="${base_url}MacOS-arm64"
+  else
+    abort "Merly install script for Mac does not support $(arch) yes.  Please contact sales@merly.ai."
   fi
 else
   abort "Merly install script is not yet supported for $kernel.  Please contact sales@merly.ai."
@@ -60,6 +62,7 @@ if [[ -z "$installer_url" ]]; then
   abort "Merly install script failed determine MerlyInstaller location.  Request URL: $url_request_url."
 fi
 echo "Downloading MerlyInstaller..."
+if [[ -f MerlyInstaller ]]; then /bin/rm -f MerlyInstaller; fi
 curl -LS -# -o MerlyInstaller $installer_url
 if [[ ! -f MerlyInstaller ]]; then
   abort "Merly install script was unable to download MerlyInstaller from $installer_url"
