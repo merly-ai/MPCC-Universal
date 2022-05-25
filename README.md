@@ -24,10 +24,14 @@ the ability to train new models on other code bases, including users’ own prop
 
 ## Installation Instructions
 
-Universal installation instructions for non-Windows environments can be found below. If you encounter any trouble with
-these steps, please contact support@merly.ai for assistance.
+MPCC’s installation instructions for various operating systems are listed below. If you previously installed MP-CodeCheck
+without a product key, but now have one, it is safe to run the MerlyInstaller again to register MPCC.
 
-For your universal setup in all non-Windows environments, go to the Command Line Interface (CLI) and execute the following command:
+If you encounter any trouble with these steps, please contact support@merly.ai for assistance.
+
+### Linux, MacOS
+
+Launch the command line interface (CLI) and execute the following command:
 
 ```
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/merly-ai/MPCC-Universal/main/install.sh)"
@@ -37,6 +41,21 @@ If you have not already registered with your license key, execute the following 
   ./MerlyInstaller -k <key> install
 ```
 Note that if you previously registered MP-CodeCheck, this step is not required. 
+
+For MacOS, we recommend running MPCC with iTerm2, due to its support of a broader color scheme than is possible for the
+default MacOS terminal. You can download it for free here: https://iterm2.com/downloads.html.
+
+### Windows (64-bit)
+Launch cmd.exe (PowerShell will NOT work because it does not have the proper native curl parameter support). Navigate to
+your user preferred installation directory (e.g., ```cd C:\Users\Paul```). Once there, execute the following commands where
+<key> is your product key:
+  
+```
+  mkdir MPCC
+  cd MPCC
+  curl -LO https://github.com/merly-ai/MP-CodeCheckBin-Windows/raw/main/bin/latest/MerlyInstaller.exe
+  MerlyInstaller -k <key> install
+```
   
 You’re now ready to launch MP-CodeCheck!
 
@@ -44,10 +63,16 @@ You’re now ready to launch MP-CodeCheck!
 Now that setup is complete, let’s launch MPCC to perform inference analysis. From the command line interface (CLI), type the
 following (where ”[code base folder]” is a directory that contains the code you want to analyze):
 
+### MacOS, Linux
 ```
 ./MPCC infer -D [code base folder]
 ```
 
+### Windows
+```
+  MPCC.exe infer -D [code base folder]
+```
+  
 When run successfully, MPCC will display information that looks similar to the following screen. This shows the progress of MPCC extracting the code DNA from the training data.
 
 <img width="769" alt="launch1" src="https://user-images.githubusercontent.com/92695077/169102884-2df8f152-5b54-4546-a194-d3ceb32c12c3.png">
