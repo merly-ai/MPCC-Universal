@@ -24,12 +24,14 @@ the ability to train new models on other code bases, including users’ own prop
 
 ## Installation Instructions
 
-MPCC’s installation instructions for various operating systems are listed below. If you previously installed MP-CodeCheck
-without a product key, but now have one, it is safe to run the MerlyInstaller again to register MPCC.
+Below we list MPCC’s installation instructions for various operating systems (OSes). If you previously installed MP-CodeCheck
+without a product key, but now have one, it is safe to run the MerlyInstaller again to register MPCC with a product key.
+
+Note that a product key will look similar to the following: 5SA9-HBP2-WRBV-5WA1
 
 If you encounter any trouble with these steps, please contact support@merly.ai for assistance.
 
-### Linux, MacOS
+### Linux (CentOS, RedHat, SUSE, Ubuntu), MacOS (M1 ARM, x64 Intel)
 
 Launch the command line interface (CLI) and execute the following command:
 
@@ -40,15 +42,14 @@ If you have not already registered with your license key, execute the following 
 ```
   ./MerlyInstaller -k <key> install
 ```
-Note that if you previously registered MP-CodeCheck, this step is not required. 
 
 For MacOS, we recommend running MPCC with iTerm2, due to its support of a broader color scheme than is possible for the
 default MacOS terminal. You can download it for free here: https://iterm2.com/downloads.html.
 
 ### Windows (64-bit)
-Launch cmd.exe (PowerShell will NOT work because it does not have the proper native curl parameter support). Navigate to
-your user preferred installation directory (e.g., ```cd C:\Users\Paul```). Once there, execute the following commands where
-<key> is your product key:
+Launch ```cmd.exe``` (do not use PowerShell as the below cURL command will not work). Navigate to
+your user preferred installation directory (e.g., ```cd C:\Users\Paul```). Then execute the following commands where
+```<key>``` is your product key:
   
 ```
   mkdir MPCC
@@ -56,9 +57,7 @@ your user preferred installation directory (e.g., ```cd C:\Users\Paul```). Once 
   curl -LO https://github.com/merly-ai/MP-CodeCheckBin-Windows/raw/main/bin/latest/MerlyInstaller.exe
   MerlyInstaller -k <key> install
 ```
-  
-You’re now ready to launch MP-CodeCheck!
-
+ 
 ## Launching MP-CodeCheck
 Now that setup is complete, let’s launch MPCC to perform inference analysis. From the command line interface (CLI), type the
 following (where ”[code base folder]” is a directory that contains the code you want to analyze):
