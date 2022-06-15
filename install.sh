@@ -42,12 +42,12 @@ if [[ "$kernel" == "Linux" ]]; then
     abort "Merly install script is not yet supported for $os.  Please contact sales@merly.ai."
   fi
 elif [[ "$kernel" == "Darwin" ]]; then
-  if [[ "$(arch)" == "x86_64" ]]; then
+  if [[ "$(arch)" == "x86_64" ]] || [[ "$(arch)" == "i386" ]]; then
     url_request_url="${base_url}MacOS-x64"
   elif [[ "$(arch)" == "arm64" ]]; then
     url_request_url="${base_url}MacOS-arm64"
   else
-    abort "Merly install script for Mac does not support $(arch) yes.  Please contact sales@merly.ai."
+    abort "Merly install script for Mac does not support $(arch) yet.  Please contact sales@merly.ai."
   fi
 else
   abort "Merly install script is not yet supported for $kernel.  Please contact sales@merly.ai."
