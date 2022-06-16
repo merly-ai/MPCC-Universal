@@ -121,16 +121,16 @@ progress of Mentor extracting the code DNA from the training model. When Mentor 
 the code DNA, it begins inference analysis on all source code that it finds in the files of the directory (or subdirectories) you
 have supplied when launching it. 
 
-<img width="769" alt="launch1" src="https://user-images.githubusercontent.com/92695077/169102884-2df8f152-5b54-4546-a194-d3ceb32c12c3.png">
+<img width="675" alt="launch1" src="https://user-images.githubusercontent.com/92695077/174149034-a7ce59ff-45dc-45f9-ae13-fbf5a267fa0c.png">
 
 The screenshot below shows an example of Mentor’s inference progress in analyzing a code repository,
 how much work it has completed, and how much work is remaining. 
 
-<img width="769" alt="launch2" src="https://user-images.githubusercontent.com/92695077/169102952-dffaab20-4a7c-4c2d-a09b-f4fde0373321.png">
+<img width="675" alt="launch2" src="https://user-images.githubusercontent.com/92695077/174149068-6bca2ded-44f8-4ebf-b96a-5db383833027.png">
 
 When inference analysis has completed, the Code View screen will appear (shown below), which will allow a user to analyze the inference results as discussed in [Exploring Mentor's Inference Results](#exploring-mentor's-inference-results).
 
-<img width="769" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/169102988-d6b250f8-d681-4167-8f1e-63919cc7c031.png">
+<img width="675" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/174149100-03501474-6bd0-4c53-994e-ad5ca693aeda.png">
 
 ## Non-Interactive Merly Mentor Execution
 In this section we describe how to launch Mentor in an non-interactive fashion. You must first have Mentor installed to perform the
