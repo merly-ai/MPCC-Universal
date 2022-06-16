@@ -85,7 +85,7 @@ MerlyInstaller usage
 ## Interactive Merly Mentor Execution
 In this section we describe how to launch Mentor in an interactive fashion. You must first have Mentor installed to perform the
 operations in this section. If you haven’t already installed Mentor, please see the [Installation Instructions](#installation-instructions).
-To see the steps to launch Mentor in a non-interactive (i.e., logging) mode, please refer to the [Non-Interactive Merly Mentor](#non-interactive-merly-mentor-execution) section. Please refer to the [Merly website](http:\merly.ai) to determine which type of inference your current product license allows.
+To see the steps to launch Mentor in a non-interactive (i.e., logging) mode, please refer to the [Non-Interactive Merly Mentor](#non-interactive-merly-mentor-execution) section. Please refer to the [Merly website](https://www.merly.ai/) to determine which type of inference your current product license allows.
 
 
 ### <i>Interactive</i> Mentor inference on a file
