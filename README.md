@@ -83,7 +83,7 @@ MerlyInstaller usage
 ```
 
 ## Interactive Merly Mentor Execution
-In this section we describe how to launch Mentor in an interaction fashion. You must first have Mentor installed to perform the
+In this section we describe how to launch Mentor in an interactive fashion. You must first have Mentor installed to perform the
 operations in this section. If you haven’t already installed Mentor, please see the [Installation Instructions](#installation-instructions).
 To see the steps to launch Mentor in a non-interactive (i.e., logging) mode, please refer to the [Non-Interactive Merly Mentor](#non-interactive-merly-mentor-execution) section. Please refer to the [Merly website](https:\merly.ai) to determine which type of inference your current product license allows.
 
@@ -132,20 +132,63 @@ When inference analysis has completed, the Code View screen will appear (shown b
 
 <img width="769" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/169102988-d6b250f8-d681-4167-8f1e-63919cc7c031.png">
 
+## Non-Interactive Merly Mentor Execution
+In this section we describe how to launch Mentor in an non-interactive fashion. You must first have Mentor installed to perform the
+operations in this section. If you haven’t already installed Mentor, please see the [Installation Instructions](#installation-instructions).
+To see the steps to launch Mentor in an interactive (i.e., user interface) mode, please refer to the [Interactive Merly Mentor](#interactive-merly-mentor-execution) section. Please refer to the [Merly website](https:\merly.ai) to determine which type of inference your current product license allows.
 
+A key reason to launch Mentor in non-interactive mode is so that the output Mentor generates can be used as input to
+downstream software development or machine learning stages. In this section, we describe how to launch Mentor noninteractively and discuss the number of output files it generates. If you believe an important output is missing from Mentor’s
+output file generation, please let us know by email at support@merly.ai.
+
+### <i>Non-interactive</i> Mentor inference on a file
+To run <i>non-interactive</i> inference on a source file, from the command line interface (CLI), type the following (where [source code file]
+is the source code file you want to analyze):
+
+### MacOS, Linux
+```
+./MerlyMentor infer -n -D [source code file]
+```
+
+### Windows
+```
+  MerlyMentor.exe infer -n -D [source code file]
+```
+
+### <i>Non-interactive</i> Mentor inference on a folder
+To run <i>non-interactive</i> inference on a source folder, from the command line interface (CLI), type the following (where [source code folder]
+is a directory that contains the folder of code you want to analyze):
+
+### MacOS, Linux
+```
+./MerlyMentor infer -n -D [source code folder]
+```
+
+### Windows
+```
+  MerlyMentor.exe infer -n -D [source code folder]
+```
+
+When Mentor executes successfully in non-interactive mode, it will generate logged anomalous data on the source code files it
+performed inference on. The files it generates are the following:
+
+* ```[source code]```.mpcc.anomaly_list.json
+* ```[source code]```.mpcc.summary.json
+* ```[source code]```.mpcc.original_expressions.json
+* ```[source code]``` folder containing each anomalies per file and directory structure.
 
 ## Exploring Mentor's Inference Results
 
 After inference analysis is performed, MPCC will show a user interface that includes source code, with an expression highlighted.
 We call this screen the *Code View*, which will be described in more detail in Views section of this manual. The image below provides an
-example of an anomalous code example found by MPCC.
+example of an anomalous code example found by Mentor.
 
 <img width="1395" alt="anomaly" src="https://user-images.githubusercontent.com/92695077/169103117-e039e3f9-61a7-4c82-a883-ab99abd8eb96.png">
 
 
 Here's a description of what you'll see on this screen:
 
-**Sort Criteria:** This refers to how MPCC is sorting the list of expressions it has found. This can be via score (a numeric value
+**Sort Criteria:** This refers to how Mentor is sorting the list of expressions it has found. This can be via score (a numeric value
 assigned by anomaly identification and complexity), or location (sequential code order).
 
 **Class Filter:** This refers to which class of complexity is being filtered in the current view. This can be set from a minimum
@@ -154,15 +197,15 @@ value of trivial to a high value of Max complexity.
 **Cost Filter:** This refers to a “mental cost” of an expression. This filter can be set from a minimum value of 0 to a maximum
 value of 2,000.
 
-**Displayed Items:** This refers to which items MPCC is displaying. It can be set to all expressions, or only anomalous
+**Displayed Items:** This refers to which items Mentor is displaying. It can be set to all expressions, or only anomalous
 expressions.
 
-**Hide/Show Known Good:** This refers to whether or not MPCC displays expressions that have been marked by the user as
+**Hide/Show Known Good:** This refers to whether or not Mentor displays expressions that have been marked by the user as
 Known Good.
 
-**Anomaly Identification:** This displays whether or not MPCC has identified the current expression as an anomaly. Non-
+**Anomaly Identification:** This displays whether or not Mentor has identified the current expression as an anomaly. Non-
 anomalous expressions will be classified as “known pattern detected” and highlighted in green. Anomalous expressions will be
-classified as “unfamiliar pattern(s) detected” and will be highlighted in green.
+classified as “unfamiliar pattern(s) detected” and will be highlighted in purple.
 
 **Cost:** This displays the “mental cost” of the current expression.
 
@@ -180,7 +223,7 @@ scroll up and down through the code by hold the Control key while pressing the u
 
 ## Basic Commands and Views
 
-In MPCC, there are a number of supported keyboard and mouse commands. In this section we describe those keystrokes and
+In Mentor, there are a number of supported keyboard and mouse commands. In this section we describe those keystrokes and
 explain mouse behavior. Perhaps the most important initial command to remember is the *help* command which can be launched
 by pressing the character ’h’ on your keyboard. The help command lists all of the keyboard commands, so if you ever find
 yourself not remembering a keyboard command, just press ’h’ and MPCC will launch the keyboard shortcut commands. A
