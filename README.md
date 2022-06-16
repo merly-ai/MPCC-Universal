@@ -391,18 +391,21 @@ MerlyMentor usage
 to review the available command line arguments.
 
 **Version**
+
 Use the command line argument -v to determine the version of Mentor that is currently installed.
 For example:
 * MacOS, Linux: ```./MerlyMentor -v```
 * Windows: ```MerlyMentor.exe -v```
 
 **Help**
+
 Use the command line argument -h to view the list of command line arguments.
 For example:
 * MacOS, Linux: ```./MerlyMentor -h```
 * Windows: ```MerlyMentor.exe -h```
 
 **Quiet**
+
 Use the command line argument -q to run Mentor in no-color mode.
 For example:
 * MacOS, Linux: ```./MerlyMentor infer -D [source code file] -q```
