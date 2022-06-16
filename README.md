@@ -19,7 +19,7 @@ variety of tasks such as: (i) detecting potential technical debt or defects and 
 the quality of an existing repository, and (iii) guiding programmers through the important aspects of any code repository, to
 name a few.
 
-![System Diagram](https://user-images.githubusercontent.com/92695077/163854383-fadec958-7958-4f27-95be-3f4dcd689f5f.jpg)
+<img width="1449" alt="system_overview" src="https://user-images.githubusercontent.com/92695077/174148835-69bf3a6d-6c2c-4479-ac2d-f9d016b45557.png">
 
 At its core, Merly Mentor is a machine programming (MP) system that learns how to identify anomalous code fragments in
 source code by training on billions of lines of source code across dozens of programming languages. These anomalous code
