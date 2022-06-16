@@ -350,25 +350,64 @@ The following lists the ways MPCC’s inference results on source code data can 
 **Toggle:** '9' key
 
 
-## MPCC Generated Files
-In addition to the live (online) user interface, you can also review the inference results offline through four MPCC generated
-files. These files are re-generated each time inference is run successfully. These files will be created in the same folder that the
-MPCC executable was launched and have the following naming structure.
+## Merly Mentor's Log File Generation
+In addition to the live (online) user interface, you can also review the inference results offline through Mentor's logged files. These files are re-generated each time inference is run successfully. These files will be created in the same folder that the Mentor executable was launched and have the following naming structure.
 
-**[Code Repo].by_file.txt:** This file lists all anomalous expressions (that are not nested if’s) found by MPCC. This human
+**[Code Repo].by_file.txt:** This file lists all anomalous expressions (that are not nested if’s) found by Mentor. This human
 readable file lists the original anomalous source and its normalized version.
 
-**[Code Repo].by_file nested if.txt:** This file lists all nested if expressions that are found by MPCC to be anomalous. This
+**[Code Repo].by_file nested if.txt:** This file lists all nested if expressions that are found by Mentor to be anomalous. This
 human readable file lists the original anomalous source and its normalized version.
 
-**[Code Repo].mpcc.anomaly_list.json:** This file lists all expressions that are found by MPCC to be anomalous, in a machine-
+**[Code Repo].mpcc.anomaly_list.json:** This file lists all expressions that are found by Mentor to be anomalous, in a machine-
 readable format.
 
 **[Code Repo].mpcc.summary.json:** This file contains a summary of all of the files, size, and lines of code reviewed by
-MPCC. It also provides a summarized report of the number of expressions, anomalies, and scores found in the source code that
+Mentor. It also provides a summarized report of the number of expressions, anomalies, and scores found in the source code that
 inference was performed on, in a machine-readable format.
 
-## MPCC Configuration
+## Recommendations
+In addition to identifying anomalies, Merly Mentor can provide recommended changes to the anomalies it identifies. To use
+this feature, select an anomaly (see [Basic Interactive Commands and Views](#basic-interactive-commands-and-views) for more details) and then press ‘r’.
+Mentor will then provide a recommendation of a possible change (or changes). This feature is still experimental and results may vary.
+
+In the screenshot below, the highlighted anomaly contains an incorrect double inequality check on the right-hand side of the conditional
+expression in the anomalous if statement. In Mentor’s Recommendation (Experimental) list, it contains a partial recommendation
+that, if applied, would correct the original, incorrect code.
+
+In the screenshot below, the highlighted anomaly contains an incorrect double equality check in the anomalous if statement that Mentor
+has flagged. In Mentor’s Recommendation (Experimental) list, it contains a complete recommendation that, if applied, would
+correct the original, incorrect code.
+
+## Advanced Usage
+In this section, we describe how to use some of the advanced features of Merly Mentor.
+
+### Command Line Arguments
+Merly Mentor has several command line arguments so that you can tailor it to your preferences. Note that you can use the
+command line argument usage
+```
+MerlyMentor usage
+```
+to review the available command line arguments.
+
+**Version**
+Use the command line argument -v to determine the version of Mentor that is currently installed.
+For example:
+* MacOS, Linux: ```./MerlyMentor -v```
+* Windows: ```MerlyMentor.exe -v```
+
+**Help**
+Use the command line argument -h to view the list of command line arguments.
+For example:
+* MacOS, Linux: ```./MerlyMentor -h```
+* Windows: ```MerlyMentor.exe -h```
+
+**Quiet**
+Use the command line argument -q to run Mentor in no-color mode.
+For example:
+* MacOS, Linux: ```./MerlyMentor infer -D [source code file] -q```
+* Windows: ```MerlyMentor.exe -D [source code file] -q```
+
 For users who wish to customize their MPCC experience, a JSON file is available to configure MPCC to fit your preferences.
 
 The JSON file is located at the following location:
