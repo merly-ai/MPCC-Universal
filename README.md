@@ -1,41 +1,49 @@
 # MPCC-Universal
-Thank you for visiting Merly's MP-CodeCheck GitHub repository! We are happy you are here! If you enjoy using MP-CodeCheck and find it useful, we would greatly appreciate your feedback. 
+Thank you for visiting the Merly Mentor GitHub repository! We are happy you are here! If you enjoy using Merly Mentor and find it useful, we would greatly appreciate your feedback. 
 
-Please email us with any questions, comments, issues, or anything related to MP-CodeCheck to support@merly.ai or debugging@merly.ai. We would love to hear from you!
+Please email us with any questions, comments, issues, or anything related to Mentor to support@merly.ai or debugging@merly.ai. We would love to hear from you!
 
-MP-CodeCheck currently works with C, C++, C#, Go, Java, JavaScript, and Python. We plan to continue to add support for other programming languages in the future.
+Mentor currently works with C, C++, C#, Fortran, Go, Java, JavaScript, PHP, Python, Rust, TypeScript, and VHDL. We plan to continue to add support for other programming languages in the future.
 
 ![merlydog_favicon](https://user-images.githubusercontent.com/92695077/163842195-66aabaa5-9db3-4499-8593-ae40fbef6e97.png)
 
 
-# What is MP-CodeCheck?
-MPCC is an AI-based code anomaly detection system. More specifically, MPCC uses self-supervision, iterative learning, and programmatic-guided evolution to detect anomalous code patterns. MPCC was designed to learn good and bad code syntax, patterns, and semantics from a large corpora of existing code. Once trained, MPCC’s model can be used for a variety of tasks such as: (i) detecting potential anomalies in existing code,
-(ii) grading the quality of an existing repository, and (iii) guiding programmers through the important aspects of an unfamiliar or updated code
-repository, to name a few.
+# What is Merly Mentor?
+At the highest level, Merly Mentor can be thought of a code-based reasoning system. More specifically, Merly Mentor (also
+known as Mentor) is a self-supervised system, which utilizes federated learning and an iterative multi-tiered code abstraction
+model to help reason about the semantics of code. An overview of Mentor’s system design is shown in Figure 1. Its distributed
+learning framework enables it to learn from hundreds of billions of lines of code in a single day on commodity hardware. In
+learning from such an abundance of code, Mentor can learn both good and bad code syntax, interesting and uninteresting
+(copied) patterns, semantics, and even recommend patches for defects it finds. Once trained, Mentor’s model can be used for a
+variety of tasks such as: (i) detecting potential technical debt or defects and recommending fixes in existing code, (ii) grading
+the quality of an existing repository, and (iii) guiding programmers through the important aspects of any code repository, to
+name a few.
 
 ![System Diagram](https://user-images.githubusercontent.com/92695077/163854383-fadec958-7958-4f27-95be-3f4dcd689f5f.jpg)
 
-At its core, MPCC is a machine programming (MP) system that autonomously identifies anomalous logical expressions directly
-in source code. These anomalous expressions, also known as anomalies, are often latent defects in the existing code that
-programmers have failed to identify or correct. MPCC helps programmers find these anomalies and correct them, thereby
-improving the overall quality of the existing software. For this limited release version of MPCC, we only include MPCC the
-ability to perform inference (i.e., detect good or bad patterns) on code. In subsequent releases of MPCC, we may also include
-the ability to train new models on other code bases, including users’ own proprietary ones.
+At its core, Merly Mentor is a machine programming (MP) system that learns how to identify anomalous code fragments in
+source code by training on billions of lines of source code across dozens of programming languages. These anomalous code
+fragments, also known as anomalies, are often latent defects in the existing code that programmers have failed to identify or
+correct. Mentor helps programmers find these anomalies and correct them, thereby improving the overall quality of the existing
+software. For this limited release version of Mentor, we only include Mentor’s ability to perform inference (i.e., detect good
+or bad patterns) on code. In subsequent releases, we may also include the ability to train new models on other code bases,
+including users’ own proprietary ones.
 
 ## Installation Instructions
 
-Below we list MPCC’s installation instructions for various operating systems (OSes). If you previously installed MP-CodeCheck
-without a product key, but now have one, it is safe to run the MerlyInstaller again to register MPCC with a product key.
-
-Note that a product key will look similar to the following: 5SA9-HBP2-WRBV-5WA1
-
-If you encounter any trouble with these steps, please contact support@merly.ai for assistance.
+Below we list Merly Mentor’s installation instructions for the currently supported operating systems (OSes). If you previously
+installed Mentor without a product key, but now have one, it is safe to run the MerlyInstaller again to register Mentor with
+a product key. A product key is a 16 character string, separated by hyphens each four characters and is generated when you
+register Mentor on Merly’s website (e.g., 5SA9-HBP2-WRBV-5WA1). If you encounter any trouble with these steps, please
+contact support@merly.ai for assistance.
 
 ### Linux (CentOS, RedHat, SUSE, Ubuntu), MacOS (M1 ARM, x64 Intel)
 
 Launch the command line interface (CLI) and execute the following command:
 
 ```
+  mkdir MPCC
+  cd MPCC
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/merly-ai/MPCC-Universal/main/install.sh)"
 ```
 If you have not already registered with your license key, execute the following command from the CLI, where `<key>` is your product key:
@@ -43,7 +51,7 @@ If you have not already registered with your license key, execute the following 
   ./MerlyInstaller -k <key> install
 ```
 
-For MacOS, we recommend running MPCC with iTerm2, due to its support of a broader color scheme than is possible for the
+For MacOS, we recommend running Mentor with iTerm2, due to its support of a broader color scheme than is possible for the
 default MacOS terminal. You can download it for free here: https://iterm2.com/downloads.html.
 
 ### Windows (64-bit)
@@ -57,7 +65,23 @@ your user preferred installation directory (e.g., ```cd C:\Users\Paul```). Then 
   curl -LO https://github.com/merly-ai/MP-CodeCheckBin-Windows/raw/main/bin/latest/MerlyInstaller.exe
   MerlyInstaller -k <key> install
 ```
- 
+
+### Updating Mentor with the MerlyInstaller
+Mentor is constantly being updated. To update your local copy of Mentor to the latest version including updating all of latest
+programming language models it supports, simply run the MerlyInstaller (installed in the above installation steps) in the
+following way:
+
+```
+MerlyInstaller updateall
+```
+
+If you would like to update only certain components, please use the ‘usage’ command from the MerlyInstaller as shown below
+for more details on how to update only the components you are interested in.
+
+```
+MerlyInstaller usage
+```
+
 ## Launching MP-CodeCheck
 Now that setup is complete, let’s launch MPCC to perform inference analysis. From the command line interface (CLI), type the
 following (where ”[code base folder]” is a directory that contains the code you want to analyze):
