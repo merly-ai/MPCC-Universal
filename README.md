@@ -406,16 +406,63 @@ For example:
 
 **Quiet**
 
-Use the command line argument -q to run Mentor in no-color mode.
+Use the command line argument -q to run Mentor in "quiet" (no header) mode.
 For example:
 * MacOS, Linux: ```./MerlyMentor infer -D [source code file] -q```
-* Windows: ```MerlyMentor.exe -D [source code file] -q```
+* Windows: ```MerlyMentor.exe infer -D [source code file] -q```
 
-For users who wish to customize their MPCC experience, a JSON file is available to configure MPCC to fit your preferences.
+**No-color**
+
+Use the command line argument -q to run Mentor in no-color mode.
+For example:
+* MacOS, Linux: ```./MerlyMentor infer -D [source code file] -n```
+* Windows: ```MerlyMentor.exe infer -D [source code file] -n```
+
+**Exclude**
+
+Use the command line argument -x [file] to exclude files matching the given pattern, * and ? supported.
+For example:
+* MacOS, Linux: ```./MerlyMentor infer -D [source code file] -x [file to exclude]```
+* Windows: ```MerlyMentor.exe infer -D [source code file] -x [file to exclude]```
+
+Use the command line argument -X [folder] to exclude folders matching the given pattern, * and ? supported.
+For example:
+* MacOS, Linux: ```./MerlyMentor infer -D [source code file] -X [folder to exclude]```
+* Windows: ```MerlyMentor.exe infer -D [source code file] -X [folder to exclude]```
+
+**Directory**
+
+Use the command line argument -D [directory] to specify the directory used for inference.
+For example:
+* MacOS, Linux: ```./MerlyMentor infer -D [directory path]```
+* Windows: ```MerlyMentor.exe infer -D [directory path]```
+
+**Language**
+
+Use the command line argument -l to choose a specific programming language that Mentor will use as the model to train on.
+Options are C, CPP, PYTHON, JAVA, C SHARP, JAVASCRIPT, GO, RUST, PHP, VHDL, FORTRAN, TYPESCRIPT, UNKNOWN. The default is UNKNOWN.
+For example, the following could be used to specify C++:
+* MacOS, Linux: ```./MerlyMentor infer -D [directory path] -l CPP```
+* Windows: ```MerlyMentor.exe infer -D [directory path] -l CPP```
+
+### Copy/Paste Functionality in Mentor
+Merly Mentor allows the user to copy items from the user interface and paste them elsewhere for further analysis.
+
+To use this functionality, left-click on the beginning of the area you’d like to copy. You’ll see a white cursor where the copy will begin (see screenshot below).
+
+
+
+Next, hold down the left mouse button and drag the cursor over the area you’d like to copy, as shown below). You can
+also hold down the Shift key and use the cursor keys (up/down, left/right) to select the area you’d like to copy. When you have
+the selection highlighted, you can either right-click on your mouse or press the Enter key to complete the copy.
+
+### Mentor Configuration
+
+For users who wish to customize their Merly Mentor experience, a JSON file is available to configure Mentor to fit your preferences.
 
 The JSON file is located at the following location:
 
-*%appdata%\..\local\merly.ai\debugging\MP-CodeCheck\config.json*
+*%appdata%\..\local\merly.ai\debugging\MerlyMentor\config.json*
 
 You can use any text editor to modify the colors, log file locations, and settings. Let’s take a closer look.
 
@@ -431,11 +478,16 @@ blue.
 
 <img width="675" alt="blue_expressions" src="https://user-images.githubusercontent.com/92695077/169103507-c6562915-d2e7-4528-9596-47b38e24e772.png">
 
+**Models Path**
+
+The models path can be modified in the JSON file, and is initially set to:
+```"models_path": "[initial install directory]\\models"```
+
 **Log Files:**
+The log path can be modified in the JSON file, and is initially set to:
+```"log_path": "[initial install directory]\\logs"```
 
-You can change the model path by setting the directory associated with: local-db_root_path
 
-You can change the log path by setting the directory associated with: log_path
 
 **Settings:** 
 
