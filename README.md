@@ -128,7 +128,7 @@ how much work it has completed, and how much work is remaining.
 
 <img width="675" alt="launch2" src="https://user-images.githubusercontent.com/92695077/174149068-6bca2ded-44f8-4ebf-b96a-5db383833027.png">
 
-When inference analysis has completed, the Code View screen will appear (shown below), which will allow a user to analyze the inference results as discussed in [Exploring Mentor's Inference Results](#exploring-mentor's-inference-results).
+When inference analysis has completed, the Code View screen will appear (shown below), which will allow a user to analyze the inference results as discussed in [Exploring Mentor's Inference Results](#exploring-mentors-inference-results).
 
 <img width="675" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/174149100-03501474-6bd0-4c53-994e-ad5ca693aeda.png">
 
