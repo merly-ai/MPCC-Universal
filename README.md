@@ -8,7 +8,7 @@ Mentor currently works with C, C++, C#, Fortran, Go, Java, JavaScript, PHP, Pyth
 ![merlydog_favicon](https://user-images.githubusercontent.com/92695077/163842195-66aabaa5-9db3-4499-8593-ae40fbef6e97.png)
 
 
-# What is Merly Mentor?
+## What is Merly Mentor?
 At the highest level, Merly Mentor can be thought of a code-based reasoning system. More specifically, Merly Mentor (also
 known as Mentor) is a self-supervised system, which utilizes federated learning and an iterative multi-tiered code abstraction
 model to help reason about the semantics of code. An overview of Mentor’s system design is shown in Figure 1. Its distributed
@@ -82,11 +82,15 @@ for more details on how to update only the components you are interested in.
 MerlyInstaller usage
 ```
 
-## Launching MP-CodeCheck
-Now that setup is complete, let’s launch MPCC to perform inference analysis. From the command line interface (CLI), type the
-following (where ”[code base folder]” is a directory that contains the code you want to analyze):
+## Interactive Merly Mentor Execution
+In this section we describe how to launch Mentor in an interaction fashion. You must first have Mentor installed to perform the
+operations in this section. If you haven’t already installed Mentor, please see the [Installation Instructions](#installation-instructions).
+To see the steps to launch Mentor in a non-interactive (i.e., logging) mode, please refer to the [Non-Interactive Merly Mentor](#non-interactive-merly-mentor-execution) section. Please refer to the [Merly website](https:\merly.ai) to determine which type of inference your current product license allows.
 
-### MacOS, Linux
+
+### <i>Interactive</i> Mentor inference on a file
+
+MacOS, Linux
 ```
 ./MPCC infer -D [code base folder]
 ```
