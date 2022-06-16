@@ -135,7 +135,7 @@ When inference analysis has completed, the Code View screen will appear (shown b
 ## Non-Interactive Merly Mentor Execution
 In this section we describe how to launch Mentor in an non-interactive fashion. You must first have Mentor installed to perform the
 operations in this section. If you haven’t already installed Mentor, please see the [Installation Instructions](#installation-instructions).
-To see the steps to launch Mentor in an interactive (i.e., user interface) mode, please refer to the [Interactive Merly Mentor](#interactive-merly-mentor-execution) section. Please refer to the [Merly website](https:\merly.ai) to determine which type of inference your current product license allows.
+To see the steps to launch Mentor in an interactive (i.e., user interface) mode, please refer to the [Interactive Merly Mentor](#interactive-merly-mentor-execution) section. Please refer to the [Merly website](https://www.merly.ai/) to determine which type of inference your current product license allows.
 
 A key reason to launch Mentor in non-interactive mode is so that the output Mentor generates can be used as input to
 downstream software development or machine learning stages. In this section, we describe how to launch Mentor noninteractively and discuss the number of output files it generates. If you believe an important output is missing from Mentor’s
