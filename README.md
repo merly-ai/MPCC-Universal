@@ -231,41 +231,74 @@ screenshot of the help dialogue box is shown below.
 
 <img width="666" alt="Help" src="https://user-images.githubusercontent.com/92695077/163893676-f5845122-d222-45db-a756-7d8eca1c63a7.png">
 
-In addition to commands, there are several screens users can utilize to help them gain deeper insights into specific anomalies,
-general anomaly information, anomalies by file, anomalies per file, and so forth.
+In addition to commands, there are several screens (referred to as *views* in this manual) that users can utilize to help them gain deeper insights into specific anomalies, general anomaly information, anomalies by file, anomalies per file, and so forth.
 
-**Code View:** This is the view of all of the code, with the expressions found highlighted. This view is the default view when
-MPCC is initially run.
+**Code View:** 
+The Code View is the default view that Mentor enters when launched. It displays some of the surrounding contextual code for a
+given piece of code that Mentor has analyzed and flagged. In the Code View, a user can iterate over all of the segments of
+code that Mentor has analyzed using a variety of keyboard and mouse commands (see [Exploring Mentor's Inference Results](#exploring-mentors-inference-results) for more details). The Code View has several utilities, perhaps the most important is to help users understand the surrounding context of code for a given
+analyzed code segment to help them determine if an action should (or should not) be taken for that code fragment.
+
+The intuition behind the Code View is that if a code fragment is deemed interesting (or uninteresting) a developer will
+likely need to understand the surrounding code context. Code View attempts to provide such surrounding context for the user.
+Often times what is shown on the screen may be insufficient context to deeply reason about the code. To help resolve this, a
+user can scroll up and down using the keyboard or mouse (more details in [Exploring Mentor's Inference Results](#exploring-mentors-inference-results)).
+
+There are generally two types of labels that Mentor assigns to code it has analyzed: unfamiliar pattern (e.g., potentially
+anomalous, which could be a defect or technical debt), or familiar pattern (e.g., code that is unlikely to be the source of technical
+debt or a defect). By default Mentor color codes unfamiliar and familiar patterns differently so users can visually discern the
+difference. Users can change these colors as discussed in the [Mentor Configuration](#mentor-configuration) section.
 
 <img width="769" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/169103253-67336b12-1317-4722-bf2e-988bf9ac6f6f.png">
 
-**Anomalies View:** Press ‘a’ to switch to the Anomalies view. This view shows all of the expressions in the code (across all
-files) that MPCC has determined to be an anomaly, sorted by score. You can move up and down the list using the up and down
-arrows, or the Page Up and Page Down keys. Press Enter with an anomaly highlighted to switch back to the Code View of that
-specific anomaly.
+**Anomalies View:**
+The Anomalies View can be accessed by pressing the ‘a’ key. This view filters out code fragments identified as non-anomalous
+by Mentor, and only displays code fragments (across all files) that Mentor identifies as anomalous.
+
+The intuition behind the Anomalies View is that a developer may be interested in looking only at each of the code fragments that Mentor identified as anomalies, instead a full list that includes non-anomalous code fragments. This can allow the developer to focus on code fragments that may need further review for possible updating. Press Enter with an anomaly highlighted to switch back to the Code View of that specific anomaly.
 
 <img width="769" alt="AnomaliesView" src="https://user-images.githubusercontent.com/92695077/169103292-b02129d8-0887-4bc8-a2e2-f072dd90307b.png">
 
-**Files View:** Press ‘f’ to switch to the Files view. This view shows all of the source code files, with the total number of
-expressions MPCC found in each file. You can move up and down the list using the up and down arrows, or the Page Up and
-Page Down keys. Press Enter with a file highlighted to switch back to the Code View of the expressions within that specific file.
+**Notable Expressions View**
+The Notable Expressions View can be accessed pressing ‘A’. This view provides a list of code fragments identified as notable
+by Merly Mentor.
+
+The intuition behind the Notable Expressions View is that a developer may be interested in code fragments that potentially have a high mental “cost” associated with understanding them. These may be code fragments that are complex and/or harder to read. The developers of Merly Mentor believe that these types of code fragments generally have a tendency to be more “dangerous” in nature, meaning a higher likelihood of being responsible for technical debt and/or the root cause of
+future defects if/when this code fragment is called. The developers of Mentor believe that reviewing these code fragments and
+simplifying them where possible will lead to better understanding of the code, and potential proactive reduction of future defects.
+
+The Notable Expressions View uses a scoring algorithm that lists the code fragmentsfrom most complex to least complex. The user can scroll through the list in the same fashion as other views, using the up and down arrows, or Page Up and Page Down.
+
+**Files View:**
+Depending on the amount of code being reviewed, it may be beneficial to target a specific file or set of files to review. Mentor
+has a way to review a specific file called the Files View. Press ‘f’ to switch to the Files View. This view shows all of the source
+code files, with the total number of expressions found in each file. You can move up and down the list using the up and down
+arrows, or the Page Up and Page Down keys. Press Enter with a file highlighted to switch back to the Code View of the code
+fragments within that specific file.
 
 <img width="769" alt="FilesView" src="https://user-images.githubusercontent.com/92695077/169103330-b25af179-4665-47fe-9c90-dbcf5c983b49.png">
 
-**Expressions View:** Press ‘e’ to switch to the Expressions view. This view shows all of the expressions in the current file,
-sorted by score. You can move up and down the list using the up and down arrows, or the Page Up and Page Down keys. Also
-note that you can toggle the sort between code location and score by pressing the ‘s’ key. Press Enter with an expression
-highlighted to switch back to the Code View with that specific expression highlighted.
+**Expressions View:**
+If there’s an extensive amount of code to review, it can be easier to review the code by the code fragments Mentor found. The
+Expressions View allows the user to do this. Press ‘e’ to switch to the Expressions View. This view shows all of the code
+fragments in the current file, sorted by score. Using this view will allow you to see the anomalies in the current file, as they are
+listed at the top of the view. You can move up and down the list using the up and down arrows, or the Page Up and Page Down
+keys. Also note that you can toggle the sort between code location and score by pressing the ‘s’ key. Press Enter with a code
+fragment highlighted to switch back to the Code View with that specific code fragment highlighted.
 
 <img width="675" alt="ExpressionsView" src="https://user-images.githubusercontent.com/92695077/169103358-d4b63f25-0e2e-4eeb-90b1-c39c0eab8cdf.png">
 
-**Details View:** Press ‘d’ to switch to the Details view. This view shows the detail of the currently selected expression. The
-detail lets you know how many anomalies MPCC identified within the expression, the cost, and the total score. Press ‘d’ to
-return to Code View.
+**Details View:**
+Once you identify a code fragment that piques your interest, you may want to review it in more detail. You can do this via
+the Details view. Press ‘d’ to switch to the Details view. This view shows the detail of the currently selected code fragment
+(anomalous or non-anomalous). The detail lets you know how many anomalies Mentor identified within the code fragment,
+as well as the cost and the total score. Drilling into these details can provide additional information about the code fragment,
+helping to determine if and where the code might need to be updated. Press ‘d’ to return to Code View.
 
 <img width="675" alt="DetailsView" src="https://user-images.githubusercontent.com/92695077/169103404-853c07a1-55bb-486f-952f-027eee1a4df8.png">
 
-**Help Pop-up:** In addition to the above views, you can press the ‘h’ key in any view to bring up the help screen which will
+**Help Pop-up:**
+In addition to the above views, you can press the ‘h’ key in any view to bring up the help screen which will
 show you all of the hot keys and their functions.
 
 <img width="666" alt="Help" src="https://user-images.githubusercontent.com/92695077/163893697-a8cd66b9-898b-4f84-8db4-92633864b4a6.png">
