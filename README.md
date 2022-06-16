@@ -179,12 +179,11 @@ performed inference on. The files it generates are the following:
 
 ## Exploring Mentor's Inference Results
 
-After inference analysis is performed, MPCC will show a user interface that includes source code, with an expression highlighted.
+After inference analysis is performed, Merly Mentor will show a user interface that includes source code, with an expression highlighted.
 We call this screen the *Code View*, which will be described in more detail in Views section of this manual. The image below provides an
 example of an anomalous code example found by Mentor.
 
-<img width="1395" alt="anomaly" src="https://user-images.githubusercontent.com/92695077/169103117-e039e3f9-61a7-4c82-a883-ab99abd8eb96.png">
-
+<img width="1397" alt="anomaly" src="https://user-images.githubusercontent.com/92695077/174149260-0f9b0798-7dfc-48bf-a3b2-97f7ed24063c.png">
 
 Here's a description of what you'll see on this screen:
 
@@ -229,7 +228,7 @@ by pressing the character ’h’ on your keyboard. The help command lists all o
 yourself not remembering a keyboard command, just press ’h’ and MPCC will launch the keyboard shortcut commands. A
 screenshot of the help dialogue box is shown below.
 
-<img width="666" alt="Help" src="https://user-images.githubusercontent.com/92695077/163893676-f5845122-d222-45db-a756-7d8eca1c63a7.png">
+<img width="662" alt="helpscreen" src="https://user-images.githubusercontent.com/92695077/174149325-05aa11ed-5dd3-4460-9c35-c61839c39f62.png">
 
 In addition to commands, there are several screens (referred to as *views* in this manual) that users can utilize to help them gain deeper insights into specific anomalies, general anomaly information, anomalies by file, anomalies per file, and so forth.
 
@@ -238,6 +237,8 @@ The Code View is the default view that Mentor enters when launched. It displays 
 given piece of code that Mentor has analyzed and flagged. In the Code View, a user can iterate over all of the segments of
 code that Mentor has analyzed using a variety of keyboard and mouse commands (see [Exploring Mentor's Inference Results](#exploring-mentors-inference-results) for more details). The Code View has several utilities, perhaps the most important is to help users understand the surrounding context of code for a given
 analyzed code segment to help them determine if an action should (or should not) be taken for that code fragment.
+
+<img width="675" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/174149370-f5dd3049-e3a0-42c1-9f98-aa60f45694d9.png">
 
 The intuition behind the Code View is that if a code fragment is deemed interesting (or uninteresting) a developer will
 likely need to understand the surrounding code context. Code View attempts to provide such surrounding context for the user.
@@ -249,19 +250,19 @@ anomalous, which could be a defect or technical debt), or familiar pattern (e.g.
 debt or a defect). By default Mentor color codes unfamiliar and familiar patterns differently so users can visually discern the
 difference. Users can change these colors as discussed in the [Mentor Configuration](#mentor-configuration) section.
 
-<img width="769" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/169103253-67336b12-1317-4722-bf2e-988bf9ac6f6f.png">
-
 **Anomalies View:**
 The Anomalies View can be accessed by pressing the ‘a’ key. This view filters out code fragments identified as non-anomalous
 by Mentor, and only displays code fragments (across all files) that Mentor identifies as anomalous.
 
-The intuition behind the Anomalies View is that a developer may be interested in looking only at each of the code fragments that Mentor identified as anomalies, instead a full list that includes non-anomalous code fragments. This can allow the developer to focus on code fragments that may need further review for possible updating. Press Enter with an anomaly highlighted to switch back to the Code View of that specific anomaly.
+<img width="675" alt="AnomaliesView" src="https://user-images.githubusercontent.com/92695077/174149405-27cbff69-e227-4251-bf09-009a8a68ccff.png">
 
-<img width="769" alt="AnomaliesView" src="https://user-images.githubusercontent.com/92695077/169103292-b02129d8-0887-4bc8-a2e2-f072dd90307b.png">
+The intuition behind the Anomalies View is that a developer may be interested in looking only at each of the code fragments that Mentor identified as anomalies, instead a full list that includes non-anomalous code fragments. This can allow the developer to focus on code fragments that may need further review for possible updating. Press Enter with an anomaly highlighted to switch back to the Code View of that specific anomaly.
 
 **Notable Expressions View**
 The Notable Expressions View can be accessed pressing ‘A’. This view provides a list of code fragments identified as notable
 by Merly Mentor.
+
+<img width="675" alt="notables" src="https://user-images.githubusercontent.com/92695077/174149532-ac6a8b82-14c0-4541-b5fd-84e3900f2317.png">
 
 The intuition behind the Notable Expressions View is that a developer may be interested in code fragments that potentially have a high mental “cost” associated with understanding them. These may be code fragments that are complex and/or harder to read. The developers of Merly Mentor believe that these types of code fragments generally have a tendency to be more “dangerous” in nature, meaning a higher likelihood of being responsible for technical debt and/or the root cause of
 future defects if/when this code fragment is called. The developers of Mentor believe that reviewing these code fragments and
@@ -276,7 +277,7 @@ code files, with the total number of expressions found in each file. You can mov
 arrows, or the Page Up and Page Down keys. Press Enter with a file highlighted to switch back to the Code View of the code
 fragments within that specific file.
 
-<img width="769" alt="FilesView" src="https://user-images.githubusercontent.com/92695077/169103330-b25af179-4665-47fe-9c90-dbcf5c983b49.png">
+<img width="675" alt="FilesView" src="https://user-images.githubusercontent.com/92695077/174149574-89193e2c-cab9-47c9-b93e-2bddb6017707.png">
 
 **Expressions View:**
 If there’s an extensive amount of code to review, it can be easier to review the code by the code fragments Mentor found. The
@@ -286,7 +287,7 @@ listed at the top of the view. You can move up and down the list using the up an
 keys. Also note that you can toggle the sort between code location and score by pressing the ‘s’ key. Press Enter with a code
 fragment highlighted to switch back to the Code View with that specific code fragment highlighted.
 
-<img width="675" alt="ExpressionsView" src="https://user-images.githubusercontent.com/92695077/169103358-d4b63f25-0e2e-4eeb-90b1-c39c0eab8cdf.png">
+<img width="675" alt="ExpressionsView" src="https://user-images.githubusercontent.com/92695077/174149602-1b022df6-2899-4ccc-88da-cfa62a386cef.png">
 
 **Details View:**
 Once you identify a code fragment that piques your interest, you may want to review it in more detail. You can do this via
@@ -295,13 +296,13 @@ the Details view. Press ‘d’ to switch to the Details view. This view shows t
 as well as the cost and the total score. Drilling into these details can provide additional information about the code fragment,
 helping to determine if and where the code might need to be updated. Press ‘d’ to return to Code View.
 
-<img width="675" alt="DetailsView" src="https://user-images.githubusercontent.com/92695077/169103404-853c07a1-55bb-486f-952f-027eee1a4df8.png">
+<img width="675" alt="DetailsView" src="https://user-images.githubusercontent.com/92695077/174149635-84c111e8-4ab7-4d00-aa5d-bed22a3807be.png">
 
 **Help Pop-up:**
 In addition to the above views, you can press the ‘h’ key in any view to bring up the help screen which will
 show you all of the hot keys and their functions.
 
-<img width="666" alt="Help" src="https://user-images.githubusercontent.com/92695077/163893697-a8cd66b9-898b-4f84-8db4-92633864b4a6.png">
+<img width="662" alt="helpscreen" src="https://user-images.githubusercontent.com/92695077/174149663-581c3ea6-702e-445a-9a90-80add2c2332a.png">
 
 ## Sorting/Filtering Inference Results
 
@@ -371,11 +372,15 @@ In addition to identifying anomalies, Merly Mentor can provide recommended chang
 this feature, select an anomaly (see [Basic Interactive Commands and Views](#basic-interactive-commands-and-views) for more details) and then press ‘r’.
 Mentor will then provide a recommendation of a possible change (or changes). This feature is still experimental and results may vary.
 
-In the screenshot below, the highlighted anomaly contains an incorrect double inequality check on the right-hand side of the conditional
+![recommend_1](https://user-images.githubusercontent.com/92695077/174149859-79b5c775-2ee8-4c69-8b9e-9c5c6f9eb3a4.png)
+
+In the screenshot above, the highlighted anomaly contains an incorrect double inequality check on the right-hand side of the conditional
 expression in the anomalous if statement. In Mentor’s Recommendation (Experimental) list, it contains a partial recommendation
 that, if applied, would correct the original, incorrect code.
 
-In the screenshot below, the highlighted anomaly contains an incorrect double equality check in the anomalous if statement that Mentor
+![recommend_2](https://user-images.githubusercontent.com/92695077/174149897-83928e41-6bcc-4554-bc82-10f736b0d86f.png)
+
+In the screenshot above, the highlighted anomaly contains an incorrect double equality check in the anomalous if statement that Mentor
 has flagged. In Mentor’s Recommendation (Experimental) list, it contains a complete recommendation that, if applied, would
 correct the original, incorrect code.
 
@@ -450,11 +455,13 @@ Merly Mentor allows the user to copy items from the user interface and paste the
 
 To use this functionality, left-click on the beginning of the area you’d like to copy. You’ll see a white cursor where the copy will begin (see screenshot below).
 
-
+<img width="675" alt="White_Cursor" src="https://user-images.githubusercontent.com/92695077/174149950-e2679f74-a5de-41ae-892b-1b02a080fd3d.png">
 
 Next, hold down the left mouse button and drag the cursor over the area you’d like to copy, as shown below). You can
 also hold down the Shift key and use the cursor keys (up/down, left/right) to select the area you’d like to copy. When you have
 the selection highlighted, you can either right-click on your mouse or press the Enter key to complete the copy.
+
+<img width="675" alt="Text_Highlighted_for_copy" src="https://user-images.githubusercontent.com/92695077/174149977-ea024349-8b22-4c03-8e65-76d99177fe59.png">
 
 ### Mentor Configuration
 
@@ -471,12 +478,12 @@ hex value of the color you’d like, and change the value of the associated item
 
 For example, you can set *anomaly_background* to RGB *ab852e* to change the highlight color of the anomalous expressions to dark orange.
 
-<img width="675" alt="orange_anomalies" src="https://user-images.githubusercontent.com/92695077/169103463-9daf31dd-fb99-4138-a618-355aa8e5dae8.png">
+<img width="675" alt="orange_anomalies" src="https://user-images.githubusercontent.com/92695077/174150011-7e2d440d-0071-44b2-ab68-fedf00126b4d.png">
 
 Or, set *highlight_background* to RGB *4a9de0* to change the highlight color of the non-anomalous expressions to light
 blue.
 
-<img width="675" alt="blue_expressions" src="https://user-images.githubusercontent.com/92695077/169103507-c6562915-d2e7-4528-9596-47b38e24e772.png">
+<img width="675" alt="blue_expressions" src="https://user-images.githubusercontent.com/92695077/174150049-12f81310-b749-4bd5-b2a5-564d34c31ab7.png">
 
 **Models Path**
 
