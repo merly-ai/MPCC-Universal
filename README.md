@@ -89,34 +89,52 @@ To see the steps to launch Mentor in a non-interactive (i.e., logging) mode, ple
 
 
 ### <i>Interactive</i> Mentor inference on a file
+To run <i>interactive</i> inference on a source file, from the command line interface (CLI), type the following (where [source code file]
+is the source code file you want to analyze):
 
-MacOS, Linux
+### MacOS, Linux
 ```
-./MPCC infer -D [code base folder]
+./MerlyMentor infer -D [source code file]
 ```
 
 ### Windows
 ```
-  MPCC.exe infer -D [code base folder]
+  MerlyMentor.exe infer -D [source code file]
 ```
-  
-When run successfully, MPCC will display information that looks similar to the following screen. This shows the progress of MPCC extracting the code DNA from the training data.
+
+### <i>Interactive</i> Mentor inference on a folder
+To run <i>interactive</i> inference on a source folder, from the command line interface (CLI), type the following (where [source code folder]
+is a directory that contains the folder of code you want to analyze):
+
+### MacOS, Linux
+```
+./MerlyMentor infer -D [source code folder]
+```
+
+### Windows
+```
+  MerlyMentor.exe infer -D [source code folder]
+```
+
+When run successfully, Mentor will display information that looks similar to the screenshot below. This shows the
+progress of Mentor extracting the code DNA from the training model. When Mentor has loaded its trained model and processed
+the code DNA, it begins inference analysis on all source code that it finds in the files of the directory (or subdirectories) you
+have supplied when launching it. 
 
 <img width="769" alt="launch1" src="https://user-images.githubusercontent.com/92695077/169102884-2df8f152-5b54-4546-a194-d3ceb32c12c3.png">
 
-When MPCC has loaded its trained model and processed the code DNA, it begins inference analysis on all source code that
-it finds in the files of the directory (or subdirectories) you have supplied when launching it. The image below shows an example of
-MPCC’s inference progress in analyzing a code repository, how much work it has completed, and how much work is remaining.
+The screenshot below shows an example of Mentor’s inference progress in analyzing a code repository,
+how much work it has completed, and how much work is remaining. 
 
 <img width="769" alt="launch2" src="https://user-images.githubusercontent.com/92695077/169102952-dffaab20-4a7c-4c2d-a09b-f4fde0373321.png">
 
-When inference analysis has completed, the Code View screen will appear (see image below), which will allow a user to
-analyze the inference results as discussed in the next section.
+When inference analysis has completed, the Code View screen will appear (shown below), which will allow a user to analyze the inference results as discussed in [Exploring Mentor's Inference Results](#exploring-mentor's-inference-results).
 
 <img width="769" alt="CodeView" src="https://user-images.githubusercontent.com/92695077/169102988-d6b250f8-d681-4167-8f1e-63919cc7c031.png">
 
 
-## Exploring MPCC's Inference Results
+
+## Exploring Mentor's Inference Results
 
 After inference analysis is performed, MPCC will show a user interface that includes source code, with an expression highlighted.
 We call this screen the *Code View*, which will be described in more detail in Views section of this manual. The image below provides an
