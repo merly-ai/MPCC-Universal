@@ -220,7 +220,7 @@ anomalies found in the current file.
 keys, and can page up and page down through the code (by location) using the Page Up and Page Down keys. You can also
 scroll up and down through the code by hold the Control key while pressing the up or the down arrow, respectively.
 
-## Basic Commands and Views
+## Basic Interactive Commands and Views
 
 In Mentor, there are a number of supported keyboard and mouse commands. In this section we describe those keystrokes and
 explain mouse behavior. Perhaps the most important initial command to remember is the *help* command which can be launched
