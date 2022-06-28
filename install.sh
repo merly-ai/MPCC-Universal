@@ -32,7 +32,7 @@ base_url='https://merlyserviceadmin.azurewebsites.net/api/InstallUrl?name=MerlyI
 kernel=$(uname -s)
 if [[ "$kernel" == "Linux" ]]; then
   os=$(grep ^NAME= /etc/os-release | awk -F= '{print $2}')
-  if [[ "$os" == *"SUSE"* ]];   then
+  if [[ "$os" == *"SUSE"* || "$os" == *"SLES"* ]];   then
     url_request_url="${base_url}SUSE"
   elif [[ "$os" == *"Ubuntu"* ]]; then
     url_request_url="${base_url}Ubuntu"
