@@ -68,4 +68,4 @@ if [[ ! -x MerlyInstaller ]]; then
   abort "Merly install script was unable to mark MerlyInstaller executable"
 fi
 
-./MerlyInstaller install %1
+./MerlyInstaller install $@
