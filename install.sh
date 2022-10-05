@@ -32,15 +32,7 @@ base_url='https://merlyserviceadmin.azurewebsites.net/api/InstallUrl?name=MerlyI
 kernel=$(uname -s)
 if [[ "$kernel" == "Linux" ]]; then
   os=$(grep ^NAME= /etc/os-release | awk -F= '{print $2}')
-  if [[ "$os" == *"SUSE"* || "$os" == *"SLES"* ]];   then
-    url_request_url="${base_url}SUSE"
-  elif [[ "$os" == *"Ubuntu"* ]]; then
-    url_request_url="${base_url}Ubuntu"
-  elif [[ "$os" == *"Red Hat"* || "$os" == *"CentOS"* ]]; then
-    url_request_url="${base_url}RedHat"
-  else
-    abort "Merly install script is not yet supported for $os.  Please contact sales@merly.ai."
-  fi
+  url_request_url="${base_url}SUSE"
 elif [[ "$kernel" == "Darwin" ]]; then
   if [[ "$(arch)" == "x86_64" ]] || [[ "$(arch)" == "i386" ]]; then
     url_request_url="${base_url}MacOS-x64"
@@ -76,4 +68,4 @@ if [[ ! -x MerlyInstaller ]]; then
   abort "Merly install script was unable to mark MerlyInstaller executable"
 fi
 
-./MerlyInstaller install
+./MerlyInstaller install %1
