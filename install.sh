@@ -30,18 +30,29 @@ base_url='https://merlyserviceadmin.azurewebsites.net/api/InstallUrl?name=MerlyI
 
 quiet=0
 staging=0
+dry_run=0
 installer_exe=MerlyInstaller
 curl_args="-#"
+
+if ! [[ -z ${MERLY_STAGING+x} ]]; then staging=${MERLY_STAGING}; fi
+if ! [[ -z ${MERLY_QUIET+x} ]]; then quiet=${MERLY_QUIET}; fi
+if ! [[ -z ${MERLY_DRYRUN+x} ]]; then dry_run=${MERLY_DRYRUN}; fi
+
 for var in "$@"
 do
   if [[ "$var" == "--staging" ]]; then
     staging=1
-    installer_exe=MerlyInstaller-Staging
   elif [[ "$var" == "-q" ]]; then
     quiet=1
-    curl_args="-s"
   fi
 done
+
+if (( $staging == 1 )); then
+  installer_exe=MerlyInstaller-Staging
+fi
+if (( $quiet == 1 )); then
+  curl_args="-s"
+fi
 
 if (( $quiet == 0 )); then
   echo "Merly Install Script, Copyright (c) 2022 Merly, Inc."
@@ -81,6 +92,11 @@ if [[ -z "$installer_url" ]]; then
 fi
 if (( $quiet == 0 )); then
   echo "Downloading $installer_exe..."
+fi
+
+if (( $dry_run == 1 )); then
+  echo "DRY-RUN: quiet=${quiet}, staging=${staging}, url=${url_request_url}, download=${installer_url}, installer=${installer_exe}"
+  exit 0
 fi
 
 if [[ -f $installer_exe ]]; then /bin/rm -f $installer_exe; fi
