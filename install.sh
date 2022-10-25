@@ -44,6 +44,8 @@ do
     staging=1
   elif [[ "$var" == "-q" ]]; then
     quiet=1
+  elif [[ "$var" == "--dry-run" ]]; then
+    dry_run=1
   fi
 done
 
