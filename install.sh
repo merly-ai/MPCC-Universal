@@ -31,12 +31,14 @@ base_url='https://merlyserviceadmin.azurewebsites.net/api/InstallUrl?name=MerlyI
 quiet=0
 staging=0
 dry_run=0
+download_only=0
 installer_exe=MerlyInstaller
 curl_args="-#"
 
 if ! [[ -z ${MERLY_STAGING+x} ]]; then staging=${MERLY_STAGING}; fi
 if ! [[ -z ${MERLY_QUIET+x} ]]; then quiet=${MERLY_QUIET}; fi
 if ! [[ -z ${MERLY_DRYRUN+x} ]]; then dry_run=${MERLY_DRYRUN}; fi
+if ! [[ -z ${MERLY_DOWNLOAD_ONLY+x} ]]; then download_only=${MERLY_DOWNLOAD_ONLY}; fi
 
 for var in "$@"
 do
@@ -46,6 +48,8 @@ do
     quiet=1
   elif [[ "$var" == "--dry-run" ]]; then
     dry_run=1
+  elif [[ "$var" == "--download-only" ]]; then
+    download_only=1
   fi
 done
 
@@ -68,16 +72,9 @@ fi
 
 kernel=$(uname -s)
 if [[ "$kernel" == "Linux" ]]; then
-  os=$(grep ^NAME= /etc/os-release | awk -F= '{print $2}')
-  url_request_url="${base_url}&os=SUSE"
+  url_request_url="${base_url}&os=Linux"
 elif [[ "$kernel" == "Darwin" ]]; then
-  if [[ "$(arch)" == "x86_64" ]] || [[ "$(arch)" == "i386" ]]; then
-    url_request_url="${base_url}&os=MacOS-x64"
-  elif [[ "$(arch)" == "arm64" ]]; then
-    url_request_url="${base_url}&os=MacOS-arm64"
-  else
-    abort "Merly install script for Mac does not support $(arch) yet.  Please contact sales@merly.ai."
-  fi
+  url_request_url="${base_url}&os=MacOS"
 else
   abort "Merly install script is not yet supported for $kernel.  Please contact sales@merly.ai."
 fi
@@ -117,4 +114,8 @@ if [[ ! -x $installer_exe ]]; then
   abort "Merly install script was unable to mark $installer_exe executable"
 fi
 
-./$installer_exe install $@
+if (( $download_only == 0 )); then
+  ./$installer_exe install $@
+elif (( $quiet == 0 )); then
+  echo "SUCCESS: $installer_exe Downloaded."
+fi
