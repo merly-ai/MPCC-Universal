@@ -115,7 +115,7 @@ if [[ ! -x $installer_exe ]]; then
 fi
 
 if (( $download_only == 0 )); then
-  ./$installer_exe install $@
+  ./$installer_exe $@
 elif (( $quiet == 0 )); then
   echo "SUCCESS: $installer_exe Downloaded."
 fi
