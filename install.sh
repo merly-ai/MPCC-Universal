@@ -85,7 +85,7 @@ fi
 if (( $quiet == 0 )); then
   echo "Fetching Merly installer location..."
 fi
-installer_url="$(curl -Ss -X GET "$url_request_url" -H "accept: */*")"
+installer_url="$(curl -Ss -X GET "$url_request_url" -H "accept: */*" --retry 5 --retry-all-errors)"
 if [[ -z "$installer_url" ]]; then
   abort "Merly install script failed determine $installer_exe location.  Request URL: $url_request_url."
 fi
@@ -100,7 +100,7 @@ fi
 
 if [[ -f $installer_exe ]]; then /bin/rm -f $installer_exe; fi
 
-curl -LS $curl_args -o $installer_exe $installer_url
+curl -LS $curl_args -o $installer_exe $installer_url --retry 5 --retry-all-errors
 if [[ ! -f $installer_exe ]]; then
   abort "Merly install script was unable to download $installer_exe from $installer_url"
 fi
