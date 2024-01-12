@@ -29,19 +29,19 @@ fi
 base_url='https://merlyserviceadmin.azurewebsites.net/api/InstallUrl?name=MerlyInstaller'
 
 quiet=0
-staging=0
+channel=Release
 dry_run=0
 download_only=0
 installer_exe=MerlyInstaller
 curl_args="-#"
 
-if ! [[ -z ${MERLY_STAGING+x} ]]; then staging=${MERLY_STAGING}; fi
+if ! [[ -z ${MERLY_CHANNEL+x} ]]; then channel=${MERLY_CHANNEL}; fi
 if ! [[ -z ${MERLY_QUIET+x} ]]; then quiet=${MERLY_QUIET}; fi
 if ! [[ -z ${MERLY_DRYRUN+x} ]]; then dry_run=${MERLY_DRYRUN}; fi
 if ! [[ -z ${MERLY_DOWNLOAD_ONLY+x} ]]; then download_only=${MERLY_DOWNLOAD_ONLY}; fi
 
-for var in "$@"
-do
+for ((i=1; i<=$#; i++)); do
+  var=${!i}
   if [[ "$var" == "--staging" ]]; then
     staging=1
   elif [[ "$var" == "-q" ]]; then
@@ -50,11 +50,13 @@ do
     dry_run=1
   elif [[ "$var" == "--download-only" ]]; then
     download_only=1
+  elif [[ "$var" == "--channel="* ]]; then
+    channel=${var#*=}
   fi
 done
 
-if (( $staging == 1 )); then
-  installer_exe=MerlyInstaller-Staging
+if [[ "$channel" != "Release" ]]; then
+  installer_exe=MerlyInstaller-$channel
 fi
 if (( $quiet == 1 )); then
   curl_args="-s"
@@ -64,11 +66,7 @@ if (( $quiet == 0 )); then
   echo "Merly Install Script, Copyright (c) 2022 Merly, Inc."
 fi
 
-if (( $staging == 1 )); then
-  base_url="${base_url}&stable=false"
-else
-  base_url="${base_url}&stable=true"
-fi
+base_url="${base_url}&channel=${channel}"
 
 kernel=$(uname -s)
 if [[ "$kernel" == "Linux" ]]; then
@@ -94,7 +92,7 @@ if (( $quiet == 0 )); then
 fi
 
 if (( $dry_run == 1 )); then
-  echo "DRY-RUN: quiet=${quiet}, staging=${staging}, url=${url_request_url}, download=${installer_url}, installer=${installer_exe}"
+  echo "DRY-RUN: quiet=${quiet}, channel=${channel}, url=${url_request_url}, download=${installer_url}, installer=${installer_exe}"
   exit 0
 fi
 
