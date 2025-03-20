@@ -39,7 +39,6 @@ if ! [[ -z ${MERLY_CHANNEL+x} ]]; then channel=${MERLY_CHANNEL}; fi
 if ! [[ -z ${MERLY_QUIET+x} ]]; then quiet=${MERLY_QUIET}; fi
 if ! [[ -z ${MERLY_DRYRUN+x} ]]; then dry_run=${MERLY_DRYRUN}; fi
 if ! [[ -z ${MERLY_DOWNLOAD_ONLY+x} ]]; then download_only=${MERLY_DOWNLOAD_ONLY}; fi
-
 for ((i=1; i<=$#; i++)); do
   var=${!i}
   if [[ "$var" == "--staging" ]]; then
@@ -63,7 +62,7 @@ if (( $quiet == 1 )); then
 fi
 
 if (( $quiet == 0 )); then
-  echo "Merly Install Script, Copyright (c) 2022 Merly, Inc."
+  echo "Merly Install Script, Copyright (c) 2022-2025 Merly, Inc."
 fi
 
 base_url="${base_url}&channel=${channel}"
