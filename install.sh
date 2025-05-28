@@ -90,29 +90,48 @@ if (( $quiet == 0 )); then
   echo "Downloading $installer_exe..."
 fi
 
+# Check if current directory is HOME, Desktop, or Downloads
+current_dir=$(pwd)
+home_dir="$HOME"
+desktop_dir="$HOME/Desktop"
+downloads_dir="$HOME/Downloads"
+
+installer_path="$installer_exe"  # Default: download to current directory
+use_merly_folder=0
+
+if [[ "$current_dir" == "$home_dir" || "$current_dir" == "$desktop_dir" || "$current_dir" == "$downloads_dir" ]]; then
+  merly_folder="Merly.ai"
+  if (( $quiet == 0 )); then
+    echo "Current directory is HOME, Desktop, or Downloads. Using $merly_folder subfolder."
+  fi
+  mkdir -p "$merly_folder" || abort "Failed to create $merly_folder directory."
+  installer_path="$merly_folder/$installer_exe"
+  use_merly_folder=1
+fi
+
 if (( $dry_run == 1 )); then
-  echo "DRY-RUN: quiet=${quiet}, channel=${channel}, url=${url_request_url}, download=${installer_url}, installer=${installer_exe}"
+  echo "DRY-RUN: quiet=${quiet}, channel=${channel}, url=${url_request_url}, download=${installer_url}, installer=${installer_path}"
   exit 0
 fi
 
-if [[ -f $installer_exe ]]; then /bin/rm -f $installer_exe; fi
+if [[ -f "$installer_path" ]]; then /bin/rm -f "$installer_path"; fi
 
-curl -LS $curl_args -o $installer_exe $installer_url --retry 5 --retry-all-errors
-if [[ ! -f $installer_exe ]]; then
-  abort "Merly install script was unable to download $installer_exe from $installer_url"
+curl -LS $curl_args -o "$installer_path" $installer_url --retry 5 --retry-all-errors
+if [[ ! -f "$installer_path" ]]; then
+  abort "Merly install script was unable to download $installer_exe to $installer_path from $installer_url"
 fi
-file_info="$(file $installer_exe)"
+file_info="$(file "$installer_path")"
 if [[ "$file_info" != *"executable"* ]]; then
   abort "Merly install script was unable find the proper $installer_exe from $installer_url"
 fi
 
-chmod +x $installer_exe
-if [[ ! -x $installer_exe ]]; then
-  abort "Merly install script was unable to mark $installer_exe executable"
+chmod +x "$installer_path"
+if [[ ! -x "$installer_path" ]]; then
+  abort "Merly install script was unable to mark $installer_path executable"
 fi
 
 if (( $download_only == 0 )); then
-  ./$installer_exe $@
+  ./"$installer_path" $@
 elif (( $quiet == 0 )); then
-  echo "SUCCESS: $installer_exe Downloaded."
+  echo "SUCCESS: $installer_path Downloaded."
 fi
