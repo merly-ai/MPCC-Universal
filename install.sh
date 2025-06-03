@@ -70,15 +70,28 @@ base_url="${base_url}&channel=${channel}"
 kernel=$(uname -s)
 if [[ "$kernel" == "Linux" ]]; then
   url_request_url="${base_url}&os=Linux"
+  arch=$(uname -m)
+  if [[ "$arch" == "aarch64" ]]; then
+    curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=Linux&arch=$arch"
+    abort "Merly does not support arm64 architecture on Linux. Please contact sales@merly.ai."
+  fi
 elif [[ "$kernel" == "Darwin" ]]; then
   url_request_url="${base_url}&os=MacOS"
+  arch=$(uname -m)
+  version=$(sw_vers -productVersion)
+  major_version=$(echo $version | cut -d. -f1)
+  if [[ "$arch" == "x86_64" ]]; then
+    curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=MacOS&arch=$arch"
+    abort "Merly does not support x64 (Intel) architecture on MacOS. Please contact sales@merly.ai."
+  elif [[ $major_version -le 12 ]]; then
+    curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=MacOS&arch=$arch&osversion=$version"
+    abort "Merly does not support MacOS version 12 or older. Your version is $version. Please contact sales@merly.ai."
+  fi
 else
-  abort "Merly install script is not yet supported for $kernel.  Please contact sales@merly.ai."
+  curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=$kernel"
+  abort "Merly does not support your OS $kernel. Please contact sales@merly.ai."
 fi
 
-if [[ -z "$url_request_url" ]]; then
-  abort "Merly install script failed to setup URL to request $installer_exe.  Please contact sales@merly.ai."
-fi
 if (( $quiet == 0 )); then
   echo "Fetching Merly installer location..."
 fi
