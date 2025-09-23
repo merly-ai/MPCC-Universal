@@ -72,7 +72,7 @@ if [[ "$kernel" == "Linux" ]]; then
   arch=$(uname -m)
   url_request_url="${base_url}&os=Linux-${arch}"
   if [[ "$arch" == "aarch64" || "arm64 "]]; then
-    curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=MacOS&arch=$arch&osversion=$version"
+    curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=Linux&arch=$arch"
     abort "Arm64 on Linux download failed. Please contact sales@merly.ai."
   fi
 elif [[ "$kernel" == "Darwin" ]]; then
