@@ -76,7 +76,6 @@ if [[ "$kernel" == "Linux" ]]; then
   fi
   url_request_url="${base_url}&os=Linux-${arch}"
 
-
 elif [[ "$kernel" == "Darwin" ]]; then
   arch=$(uname -m)
   url_request_url="${base_url}&os=MacOS-${arch}"
