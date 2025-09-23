@@ -75,7 +75,6 @@ if [[ "$kernel" == "Linux" ]]; then
       arch="arm64"
   fi
   url_request_url="${base_url}&os=Linux-${arch}"
-  abort "Arm64 on Linux download failed. Please contact sales@merly.ai."
 fi
 
 elif [[ "$kernel" == "Darwin" ]]; then
