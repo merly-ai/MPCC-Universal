@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -u
+set -euo pipefail
 
 abort() {
   printf "%s\n" "$@" >&2
@@ -39,7 +39,7 @@ if ! [[ -z ${MERLY_CHANNEL+x} ]]; then channel=${MERLY_CHANNEL}; fi
 if ! [[ -z ${MERLY_QUIET+x} ]]; then quiet=${MERLY_QUIET}; fi
 if ! [[ -z ${MERLY_DRYRUN+x} ]]; then dry_run=${MERLY_DRYRUN}; fi
 if ! [[ -z ${MERLY_DOWNLOAD_ONLY+x} ]]; then download_only=${MERLY_DOWNLOAD_ONLY}; fi
-for ((i=1; i<=$#; i++)); do
+for ((i = 1; i <= $#; i++)); do
   var=${!i}
   if [[ "$var" == "--staging" ]]; then
     staging=1
@@ -57,11 +57,11 @@ done
 if [[ "$channel" != "Release" ]]; then
   installer_exe=MerlyInstaller-$channel
 fi
-if (( $quiet == 1 )); then
+if (($quiet == 1)); then
   curl_args="-s"
 fi
 
-if (( $quiet == 0 )); then
+if (($quiet == 0)); then
   echo "Merly Install Script, Copyright (c) 2022-2025 Merly, Inc."
 fi
 
@@ -72,7 +72,7 @@ if [[ "$kernel" == "Linux" ]]; then
   arch=$(uname -m)
   url_request_url="${base_url}&os=Linux-${arch}"
   if [[ "$arch" == "aarch64" ]]; then
-      arch="arm64"
+    arch="arm64"
   fi
   url_request_url="${base_url}&os=Linux-${arch}"
 
@@ -90,7 +90,7 @@ else
   abort "Merly does not support your OS $kernel. Please contact sales@merly.ai."
 fi
 
-if (( $quiet == 0 )); then
+if (($quiet == 0)); then
   echo "Fetching Merly installer location..."
 fi
 installer_url="$(curl -Ss -X GET "$url_request_url" -H "accept: */*" --retry 5 --retry-all-errors)"
@@ -98,7 +98,7 @@ if [[ -z "$installer_url" ]]; then
   curl -s -X GET "https://merlyserviceadmin.azurewebsites.net/api/InstallLog?os=$kernel&arch=$url_request_url"
   abort "Merly install script failed determine $installer_exe location.  Request URL: $url_request_url."
 fi
-if (( $quiet == 0 )); then
+if (($quiet == 0)); then
   echo "Downloading $installer_exe..."
 fi
 
@@ -108,12 +108,12 @@ home_dir="$HOME"
 desktop_dir="$HOME/Desktop"
 downloads_dir="$HOME/Downloads"
 
-installer_path="$installer_exe"  # Default: download to current directory
+installer_path="$installer_exe" # Default: download to current directory
 use_merly_folder=0
 
 if [[ "$current_dir" == "$home_dir" || "$current_dir" == "$desktop_dir" || "$current_dir" == "$downloads_dir" ]]; then
   merly_folder="Merly.ai"
-  if (( $quiet == 0 )); then
+  if (($quiet == 0)); then
     echo "Current directory is HOME, Desktop, or Downloads. Using $merly_folder subfolder."
   fi
   mkdir -p "$merly_folder" || abort "Failed to create $merly_folder directory."
@@ -121,7 +121,7 @@ if [[ "$current_dir" == "$home_dir" || "$current_dir" == "$desktop_dir" || "$cur
   use_merly_folder=1
 fi
 
-if (( $dry_run == 1 )); then
+if (($dry_run == 1)); then
   echo "DRY-RUN: quiet=${quiet}, channel=${channel}, url=${url_request_url}, download=${installer_url}, installer=${installer_path}"
   exit 0
 fi
@@ -142,8 +142,9 @@ if [[ ! -x "$installer_path" ]]; then
   abort "Merly install script was unable to mark $installer_path executable"
 fi
 
-if (( $download_only == 0 )); then
+if (($download_only == 0)); then
   ./"$installer_path" $@
-elif (( $quiet == 0 )); then
+elif (($quiet == 0)); then
   echo "SUCCESS: $installer_path Downloaded."
 fi
+
